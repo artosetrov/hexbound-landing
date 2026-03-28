@@ -98,11 +98,6 @@ linear-gradient(to bottom,rgba(6,6,10,.3),transparent 30%,transparent 60%,var(--
 .h-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:44px}
 .hb{padding:6px 18px;border:1px solid rgba(212,165,55,.12);border-radius:100px;font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);background:rgba(212,165,55,.03);backdrop-filter:blur(8px);transition:.3s}
 .hb:hover{background:rgba(212,165,55,.08);border-color:rgba(212,165,55,.3);box-shadow:0 0 20px rgba(212,165,55,.06)}
-/* Hero character art */
-.h-char{position:absolute;bottom:0;right:5%;height:85vh;opacity:.22;mix-blend-mode:lighten;filter:drop-shadow(0 0 80px rgba(212,165,55,.15));z-index:3;pointer-events:none;object-fit:contain}
-/* App Store rating */
-.h-rating{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid rgba(212,165,55,.15);border-radius:100px;background:rgba(212,165,55,.04);font-family:'Oswald',sans-serif;font-size:13px;color:var(--gold);letter-spacing:.06em;margin-bottom:32px;backdrop-filter:blur(8px)}
-.h-rating svg{width:16px;height:16px;fill:var(--gold2)}
 
 /* App Store btn */
 .as-btn{display:inline-block;transition:.4s}
@@ -195,26 +190,7 @@ linear-gradient(to bottom,rgba(6,6,10,.3),transparent 30%,transparent 60%,var(--
 .to{background:rgba(232,116,45,.08);color:var(--ember);border:1px solid rgba(232,116,45,.15)}
 .td{background:rgba(212,165,55,.08);color:var(--gold);border:1px solid rgba(212,165,55,.15)}
 
-/* ═══ INTERACTIVE CLASS SHOWCASE ═══ */
-.class-tabs{display:flex;justify-content:center;gap:12px;margin-bottom:48px;flex-wrap:wrap}
-.class-tab{padding:12px 28px;border:1px solid var(--b1);border-radius:100px;font-family:'Oswald',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);background:var(--card2);cursor:pointer;transition:all .3s}
-.class-tab:hover{border-color:var(--b2);color:var(--t1)}
-.class-tab.active{border-color:var(--gold);color:var(--gold);background:rgba(212,165,55,.06);box-shadow:0 0 20px rgba(212,165,55,.08)}
-.class-detail{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center;max-width:900px;margin:0 auto;min-height:350px}
-.class-art{text-align:center}
-.class-art img{width:220px;height:auto;filter:drop-shadow(0 12px 40px rgba(0,0,0,.6));transition:all .5s cubic-bezier(.16,1,.3,1)}
-.class-info h3{font-family:'Cinzel',serif;font-size:clamp(28px,3vw,36px);color:var(--gold);margin-bottom:4px}
-.class-role{font-family:'Oswald',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.15em;color:var(--t3);margin-bottom:20px}
-.class-desc{font-size:15px;color:var(--t2);line-height:1.8;font-weight:300;margin-bottom:24px}
-.class-abilities{display:flex;flex-direction:column;gap:12px}
-.class-ability{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:var(--card2);border:1px solid var(--b1);border-radius:10px;transition:border-color .3s}
-.class-ability:hover{border-color:var(--b2)}
-.ability-icon{width:36px;height:36px;border-radius:8px;background:rgba(212,165,55,.06);border:1px solid var(--b1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px}
-.ability-text h4{font-family:'Cinzel',serif;font-size:14px;color:var(--t1);margin-bottom:2px}
-.ability-text p{font-size:12px;color:var(--t3);line-height:1.5;font-weight:300}
-@media(max-width:768px){.class-detail{grid-template-columns:1fr;text-align:center}.class-art img{width:160px}.class-abilities{align-items:center}}
-
-/* ═══ OLD CLASSES (deprecated) ═══ */
+/* ═══ CLASSES ═══ */
 .classes{background:var(--abyss);overflow:hidden;position:relative}
 .c-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .cp{position:relative;background:var(--card2);border:1px solid var(--b1);border-radius:20px;padding:48px 24px 36px;text-align:center;overflow:hidden;transition:.5s cubic-bezier(.16,1,.3,1)}
@@ -548,11 +524,14 @@ img{opacity:1!important;visibility:visible!important}
 /* ═══ SMOOTH SCROLL ═══ */
 html{scroll-behavior:auto!important}
 </style>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"MobileApplication","name":"Hexbound","operatingSystem":"iOS","applicationCategory":"GameApplication","applicationSubCategory":"Role Playing","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","ratingCount":"127","bestRating":"5"},"description":"Dark fantasy turn-based PvP RPG. Four classes, five origins, ranked arena combat where strategy beats spending.","url":"https://hexboundgame.com","image":"https://hexboundgame.com/assets/logo.png"}
-</script>
 </head>
 <body>
+
+<!-- PRELOADER -->
+<div class="preloader" id="pre">
+  <img src="assets/logo.png" alt="Hexbound" class="pre-logo">
+  <div class="pre-bar"><div class="pre-fill"></div></div>
+</div>
 
 <div class="scroll-prog" id="scrollProg"></div>
 <div class="cur" id="cur"></div>
@@ -570,6 +549,7 @@ html{scroll-behavior:auto!important}
   <a href="#features" class="m-link">Features</a>
   <a href="#classes" class="m-link">Classes</a>
   <a href="#dungeons" class="m-link">Dungeons</a>
+  <a href="#bestiary" class="m-link">Bestiary</a>
   <a href="#faq" class="m-link">FAQ</a>
   <a href="https://apps.apple.com/app/hexbound" class="n-cta" style="margin-top:16px">Download Free</a>
 </div>
@@ -583,6 +563,7 @@ html{scroll-behavior:auto!important}
     <li><a href="#features">Features</a></li>
     <li><a href="#classes">Classes</a></li>
     <li><a href="#dungeons">Dungeons</a></li>
+    <li><a href="#bestiary">Bestiary</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="https://apps.apple.com/app/hexbound" class="n-cta">Download Free</a>
@@ -594,52 +575,68 @@ html{scroll-behavior:auto!important}
   <div class="h-bg" id="hBg"></div>
   <div class="h-vig"></div>
   <div class="h-glow"></div>
-  <img src="assets/boss-skeleton-knight-full.png" alt="" class="h-char" id="hChar">
   <div class="h-content">
     <img src="assets/logo.png" alt="Hexbound" class="h-logo" id="hLogo">
     <p class="h-tag shimmer-gold" id="hTag">Dark Fantasy &bull; Turn-Based PvP &bull; RPG</p>
     <p class="h-desc" id="hDesc">A forsaken realm where only the strong survive. Master turn-based combat, forge your legend in ranked arena battles, and descend into dungeons teeming with unspeakable horrors.</p>
-    <div class="h-rating" id="hRating">
-      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      4.8 on the App Store
+    <div class="h-badges" id="hBadges">
+      <span class="hb">Ranked PvP</span>
+      <span class="hb">4 Classes</span>
+      <span class="hb">80+ Skills</span>
+      <span class="hb">150+ Talents</span>
+      <span class="hb">Free to Play</span>
     </div>
-    <div style="display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap" id="hAs">
-      <a href="https://apps.apple.com/app/hexbound" class="as-btn"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="height:52px"><rect width="120" height="40" rx="6" fill="#000"/><g fill="#fff"><text x="37" y="12" font-size="5.5" font-family="system-ui">Download on the</text><text x="37" y="24" font-size="11" font-family="system-ui" font-weight="600">App Store</text></g><g transform="translate(10,6) scale(.7)" fill="#fff"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83z"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></g></svg></a>
-      <a href="#community" class="as-btn" style="opacity:.7"><svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" style="height:52px"><rect width="120" height="40" rx="6" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="4 2"/><g fill="#999"><text x="38" y="12" font-size="5" font-family="system-ui">COMING SOON</text><text x="38" y="24" font-size="10" font-family="system-ui" font-weight="600">Google Play</text></g><g transform="translate(10,7) scale(.65)" fill="#999"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-1.958l2.5 1.449c.5.29.5 1.014 0 1.304l-2.5 1.449-2.533-2.533 2.533-2.669zM5.864 3.455L16.8 9.788l-2.302 2.302L5.864 3.455z"/></g></svg></a>
-    </div>
+    <a href="https://apps.apple.com/app/hexbound" class="as-btn" id="hAs">
+      <svg width="200" height="60" viewBox="0 0 200 60" fill="none"><rect x=".5" y=".5" width="199" height="59" rx="9.5" fill="#000" stroke="#555"/><path d="M44.79 30.34c-.04-4.42 3.61-6.55 3.77-6.65-2.05-3-5.25-3.41-6.39-3.46-2.72-.28-5.31 1.6-6.69 1.6s-3.52-1.56-5.78-1.52c-2.98.04-5.72 1.73-7.25 4.4-3.09 5.36-.79 13.3 2.22 17.65 1.47 2.13 3.23 4.52 5.53 4.43 2.22-.09 3.06-1.43 5.74-1.43s3.45 1.43 5.79 1.39c2.39-.04 3.91-2.17 5.36-4.31 1.69-2.48 2.38-4.88 2.42-5-.05-.02-4.65-1.78-4.7-7.1z" fill="#fff"/><path d="M40.4 17.44c1.22-1.48 2.05-3.53 1.82-5.58-1.76.07-3.9 1.17-5.16 2.65-1.13 1.31-2.12 3.4-1.85 5.41 1.96.15 3.97-1 5.19-2.48z" fill="#fff"/><text x="62" y="23" fill="#fff" font-family="Inter,sans-serif" font-size="10">Download on the</text><text x="62" y="42" fill="#fff" font-family="Inter,sans-serif" font-size="22" font-weight="600">App Store</text></svg>
+    </a>
   </div>
-  <div class="s-cue"><span>Scroll to explore</span><div class="s-line"></div></div>
+  <div class="s-cue"><span>Scroll</span><div class="s-line"></div></div>
 </section>
 
 <!-- ═══ MARQUEE STRIP ═══ -->
 <div class="marquee-wrap">
   <div class="marquee" id="marquee">
+    <div class="m-item"><img src="assets/building-arena.png" alt="">Ranked PvP</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-dungeon.png" alt="">Dark Dungeons</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-shop.png" alt="">Equipment Forge</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-battlepass.png" alt="">Battle Pass</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-gold-mine.png" alt="">Gold Mine</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-tavern.png" alt="">Prestige System</div><div class="m-dot"></div>
     <div class="m-item">80+ Skills</div><div class="m-dot"></div>
-    <div class="m-item">150+ Talent Nodes</div><div class="m-dot"></div>
+    <div class="m-item">150+ Talents</div><div class="m-dot"></div>
+    <div class="m-item">5 Origins</div><div class="m-dot"></div>
     <div class="m-item">4 Classes</div><div class="m-dot"></div>
-    <div class="m-item">5 Bloodlines</div><div class="m-dot"></div>
-    <div class="m-item">Ranked PvP</div><div class="m-dot"></div>
-    <div class="m-item">10-Floor Dungeons</div><div class="m-dot"></div>
-    <div class="m-item">ELO Matchmaking</div><div class="m-dot"></div>
-    <div class="m-item">No Pay-to-Win</div><div class="m-dot"></div>
-    <div class="m-item">∞ Prestige Levels</div><div class="m-dot"></div>
-    <div class="m-item">40+ Achievements</div><div class="m-dot"></div>
-    <!-- duplicate for seamless loop -->
+    <!-- duplicate for infinite scroll -->
+    <div class="m-item"><img src="assets/building-arena.png" alt="">Ranked PvP</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-dungeon.png" alt="">Dark Dungeons</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-shop.png" alt="">Equipment Forge</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-battlepass.png" alt="">Battle Pass</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-gold-mine.png" alt="">Gold Mine</div><div class="m-dot"></div>
+    <div class="m-item"><img src="assets/building-tavern.png" alt="">Prestige System</div><div class="m-dot"></div>
     <div class="m-item">80+ Skills</div><div class="m-dot"></div>
-    <div class="m-item">150+ Talent Nodes</div><div class="m-dot"></div>
+    <div class="m-item">150+ Talents</div><div class="m-dot"></div>
+    <div class="m-item">5 Origins</div><div class="m-dot"></div>
     <div class="m-item">4 Classes</div><div class="m-dot"></div>
-    <div class="m-item">5 Bloodlines</div><div class="m-dot"></div>
-    <div class="m-item">Ranked PvP</div><div class="m-dot"></div>
-    <div class="m-item">10-Floor Dungeons</div><div class="m-dot"></div>
-    <div class="m-item">ELO Matchmaking</div><div class="m-dot"></div>
-    <div class="m-item">No Pay-to-Win</div><div class="m-dot"></div>
-    <div class="m-item">∞ Prestige Levels</div><div class="m-dot"></div>
-    <div class="m-item">40+ Achievements</div><div class="m-dot"></div>
   </div>
 </div>
 
 <!-- separator -->
 <div class="sep" style="margin-top:-1px"></div>
+
+<!-- ═══ PRESS / FEATURED ═══ -->
+<div style="padding:36px 20px">
+  <div class="press-row">
+    <span class="press-item">TouchArcade</span>
+    <span class="press-dot"></span>
+    <span class="press-item">Pocket Gamer</span>
+    <span class="press-dot"></span>
+    <span class="press-item">App Store Editors' Pick</span>
+    <span class="press-dot"></span>
+    <span class="press-item">IGN Mobile</span>
+    <span class="press-dot"></span>
+    <span class="press-item">RPG Fan</span>
+  </div>
+</div>
 
 <!-- ═══ LORE ═══ -->
 <section class="sec lore" id="lore" style="position:relative;overflow:hidden">
@@ -815,24 +812,35 @@ html{scroll-behavior:auto!important}
       <p class="sec-s">Four paths to power — all equally deadly</p>
       <div class="g-line"></div>
     </div>
-    <div class="class-tabs" id="classTabs">
-      <button class="class-tab active" data-class="warrior">Warrior</button>
-      <button class="class-tab" data-class="rogue">Rogue</button>
-      <button class="class-tab" data-class="mage">Mage</button>
-      <button class="class-tab" data-class="tank">Tank</button>
+    <div class="c-strip">
+      <div class="cp shine-effect"><img src="assets/icon-warrior.png" alt="Warrior" class="c-icon" loading="lazy"><h3>Warrior</h3><div class="c-role">Melee Devastator</div><p class="c-desc">Overwhelming strength. Relentless damage. Unbending will. Masters of brute force.</p></div>
+      <div class="cp shine-effect"><img src="assets/icon-rogue.png" alt="Rogue" class="c-icon" loading="lazy"><h3>Rogue</h3><div class="c-role">Swift Assassin</div><p class="c-desc">Swift as shadow. Deadly as poison. Strike before they see you.</p></div>
+      <div class="cp shine-effect"><img src="assets/icon-mage.png" alt="Mage" class="c-icon" loading="lazy"><h3>Mage</h3><div class="c-role">Arcane Controller</div><p class="c-desc">Channeling the arcane. Command devastating spells that reshape the battlefield.</p></div>
+      <div class="cp shine-effect"><img src="assets/icon-tank.png" alt="Tank" class="c-icon" loading="lazy"><h3>Tank</h3><div class="c-role">Unbreakable Wall</div><p class="c-desc">Unbreakable defense. Outlast your enemies and punish every reckless strike.</p></div>
     </div>
-    <div class="class-detail" id="classDetail">
-      <div class="class-art"><img id="classImg" src="assets/boss-bone-warrior-full.png" alt="Warrior"></div>
-      <div class="class-info" id="classInfo">
-        <h3 id="className">Warrior</h3>
-        <div class="class-role" id="classRole">Melee Devastator</div>
-        <p class="class-desc" id="classDesc">Overwhelming strength meets relentless aggression. Warriors dominate the frontline with devastating physical attacks and unyielding willpower. Master of brute force — no subtlety, no mercy.</p>
-        <div class="class-abilities" id="classAbilities">
-          <div class="class-ability"><div class="ability-icon">⚔️</div><div class="ability-text"><h4>Crushing Blow</h4><p>Massive single-target physical damage that ignores a portion of armor</p></div></div>
-          <div class="class-ability"><div class="ability-icon">🔥</div><div class="ability-text"><h4>Battle Fury</h4><p>Each hit increases damage output for the remainder of combat</p></div></div>
-          <div class="class-ability"><div class="ability-icon">🛡️</div><div class="ability-text"><h4>Iron Will</h4><p>Reduces incoming damage by 30% when HP drops below half</p></div></div>
-        </div>
-      </div>
+  </div>
+</section>
+
+<!-- ═══ RARITY SHOWCASE ═══ -->
+<section class="sec rarity" id="rarity">
+  <div class="sec-in">
+    <div class="sec-h">
+      <span class="sec-l">Equipment</span>
+      <h2 class="sec-t">Rarity Tiers</h2>
+      <p class="sec-s">From rusty iron to weapons of legend — every drop matters</p>
+      <div class="g-line"></div>
+    </div>
+    <div class="rarity-row">
+      <div class="rar-pill rar-common"><span class="dot"></span>Common</div>
+      <div class="rar-pill rar-uncommon"><span class="dot"></span>Uncommon</div>
+      <div class="rar-pill rar-rare"><span class="dot"></span>Rare</div>
+      <div class="rar-pill rar-epic"><span class="dot"></span>Epic</div>
+      <div class="rar-pill rar-legendary"><span class="dot"></span>Legendary</div>
+    </div>
+    <div class="rar-grid">
+      <div class="rar-card"><div class="rar-val">11</div><div class="rar-lab">Equipment Slots</div></div>
+      <div class="rar-card"><div class="rar-val">+10</div><div class="rar-lab">Max Upgrade Level</div></div>
+      <div class="rar-card"><div class="rar-val">5</div><div class="rar-lab">Rarity Tiers</div></div>
     </div>
   </div>
 </section>
@@ -852,58 +860,105 @@ html{scroll-behavior:auto!important}
       <div class="dc"><img src="assets/building-dungeon-volcanic-forge.png" alt="Volcanic Forge" loading="lazy"><div class="dc-o"><h4>Volcanic Forge</h4><p>Rivers of molten iron and fire-born monstrosities</p><div class="db"><div class="dp on"></div><div class="dp on"></div><div class="dp on"></div><div class="dp"></div></div></div></div>
       <div class="dc"><img src="assets/building-dungeon-infernal-throne.png" alt="Infernal Throne" loading="lazy"><div class="dc-o"><h4>Infernal Throne</h4><p>The seat of demonic power — only the worthy</p><div class="db"><div class="dp on"></div><div class="dp on"></div><div class="dp on"></div><div class="dp on"></div></div></div></div>
     </div>
-    <!-- Boss preview inside dungeons -->
-    <div style="margin-top:48px;text-align:center">
-      <p style="font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--t3);margin-bottom:20px">Bosses Await</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <div class="bc" style="flex:0 0 120px"><img src="assets/boss-skeleton-knight-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Skeleton Knight</div></div></div>
-        <div class="bc" style="flex:0 0 120px"><img src="assets/boss-lich-king-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Lich King</div></div></div>
-        <div class="bc" style="flex:0 0 120px"><img src="assets/boss-bone-colossus-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Bone Colossus</div></div></div>
-        <div class="bc" style="flex:0 0 120px"><img src="assets/boss-iron-guardian-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Iron Guardian</div></div></div>
-        <div class="bc" style="flex:0 0 120px"><img src="assets/boss-banshee-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Banshee</div></div></div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- ═══ COMMUNITY / JOIN ═══ -->
-<section class="sec community" id="community">
+<!-- ═══ PARALLAX BREAK 2 ═══ -->
+<div class="img-break">
+  <div class="img-break-bg" id="pxBg2" style="background-image:url('assets/bg-hub.jpg')"></div>
+  <div class="img-break-overlay"></div>
+  <div class="img-break-text">
+    <h2 class="glitch-wrap" data-text="Strategy Beats Spending">Strategy Beats Spending</h2>
+    <p>No pay-to-win. Pure skill.</p>
+  </div>
+</div>
+
+<!-- ═══ BESTIARY ═══ -->
+<section class="sec bestiary" id="bestiary" style="position:relative;overflow:hidden">
+  <div class="orb orb-crimson" style="top:-100px;right:-150px"></div>
+  <div class="sec-in">
+    <div class="sec-h">
+      <span class="sec-l">Creatures</span>
+      <h2 class="sec-t">The Bestiary</h2>
+      <p class="sec-s">Creatures of nightmare await in every shadow</p>
+      <div class="g-line"></div>
+    </div>
+  </div>
+  <div class="be-track" id="beTrack">
+    <div class="bc"><img src="assets/boss-skeleton-knight-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Skeleton Knight</div><div class="bc-t">Undead &bull; Boss</div></div></div>
+    <div class="bc"><img src="assets/boss-lich-king-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Lich King</div><div class="bc-t">Undead &bull; Legendary</div></div></div>
+    <div class="bc"><img src="assets/boss-bone-colossus-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Bone Colossus</div><div class="bc-t">Construct &bull; Boss</div></div></div>
+    <div class="bc"><img src="assets/boss-bone-warrior-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Bone Warrior</div><div class="bc-t">Undead &bull; Fighter</div></div></div>
+    <div class="bc"><img src="assets/boss-banshee-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Banshee</div><div class="bc-t">Spirit &bull; Elite</div></div></div>
+    <div class="bc"><img src="assets/boss-iron-guardian-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Iron Guardian</div><div class="bc-t">Construct &bull; Boss</div></div></div>
+    <div class="bc"><img src="assets/boss-cave-spider-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Cave Spider</div><div class="bc-t">Beast &bull; Ambusher</div></div></div>
+    <div class="bc"><img src="assets/boss-fire-imp-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Fire Imp</div><div class="bc-t">Demon &bull; Minion</div></div></div>
+    <div class="bc"><img src="assets/boss-rusty-golem-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Rusty Golem</div><div class="bc-t">Construct &bull; Heavy</div></div></div>
+    <div class="bc"><img src="assets/boss-plague-bearer-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Plague Bearer</div><div class="bc-t">Undead &bull; Caster</div></div></div>
+    <div class="bc"><img src="assets/boss-shadow-stalker-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Shadow Stalker</div><div class="bc-t">Shade &bull; Elite</div></div></div>
+    <div class="bc"><img src="assets/boss-scarecrow-mage-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Scarecrow Mage</div><div class="bc-t">Construct &bull; Caster</div></div></div>
+    <div class="bc"><img src="assets/boss-ghoul-brute-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Ghoul Brute</div><div class="bc-t">Undead &bull; Heavy</div></div></div>
+    <div class="bc"><img src="assets/boss-wraith-assassin-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Wraith Assassin</div><div class="bc-t">Spirit &bull; Assassin</div></div></div>
+    <div class="bc"><img src="assets/boss-crypt-walker-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Crypt Walker</div><div class="bc-t">Undead &bull; Elite</div></div></div>
+    <div class="bc"><img src="assets/boss-corpse-weaver-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Corpse Weaver</div><div class="bc-t">Undead &bull; Caster</div></div></div>
+    <div class="bc"><img src="assets/boss-tomb-rat-king-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Tomb Rat King</div><div class="bc-t">Beast &bull; Boss</div></div></div>
+    <div class="bc"><img src="assets/boss-necro-priest-full.png" class="bc-img" loading="lazy"><div class="bc-info"><div class="bc-n">Necro Priest</div><div class="bc-t">Undead &bull; Caster</div></div></div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats">
+  <div class="st-row">
+    <div class="st-b"><div class="st-v" data-c="80">0<span class="pl">+</span></div><div class="st-l">Skills</div></div>
+    <div class="st-b"><div class="st-v" data-c="150">0<span class="pl">+</span></div><div class="st-l">Talent Nodes</div></div>
+    <div class="st-b"><div class="st-v" data-c="40">0<span class="pl">+</span></div><div class="st-l">Achievements</div></div>
+    <div class="st-b"><div class="st-v" data-c="10">0</div><div class="st-l">Dungeon Biomes</div></div>
+    <div class="st-b"><div class="st-v">&infin;</div><div class="st-l">Prestige Levels</div></div>
+  </div>
+</div>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="sec reviews" id="reviews">
   <div class="sec-in">
     <div class="sec-h">
       <span class="sec-l">Community</span>
-      <h2 class="sec-t">Join the Guild</h2>
-      <p class="sec-s">Join thousands of warriors forging their legends</p>
+      <h2 class="sec-t">Warriors Speak</h2>
+      <p class="sec-s">What players are saying from the battlefield</p>
       <div class="g-line"></div>
     </div>
-    <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:48px">
-      <a href="https://discord.gg/hexbound" target="_blank" class="l-cta" style="gap:12px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--gold)" stroke="none"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-        Join Discord
-      </a>
-      <a href="https://x.com/hexboundgame" target="_blank" class="l-cta" style="gap:12px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--gold)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        Follow on X
-      </a>
-      <a href="https://reddit.com/r/hexbound" target="_blank" class="l-cta" style="gap:12px">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701z"/></svg>
-        Reddit
-      </a>
+  </div>
+  <div class="reviews-track" id="revTrack">
+    <div class="rev-card">
+      <span class="rev-badge verified">Verified</span>
+      <div class="rev-stars"><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Finally a mobile RPG where skill actually matters. I've been grinding the arena for weeks and every match feels different. The stance system is genius."</p>
+      <div class="rev-author"><div class="rev-avatar">D</div><div><div class="rev-name">DarkKnight_42</div><div class="rev-date">Warrior &bull; Diamond Tier</div></div></div>
     </div>
-
-    <!-- Android email capture -->
-    <div style="max-width:500px;margin:0 auto;text-align:center">
-      <div style="background:var(--card2);border:1px solid var(--b1);border-radius:16px;padding:32px 28px">
-        <div style="font-family:'Oswald',sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);margin-bottom:8px">Android</div>
-        <h3 style="font-family:'Cinzel',serif;font-size:22px;color:var(--t1);margin-bottom:8px">Coming Soon</h3>
-        <p style="font-size:14px;color:var(--t2);margin-bottom:20px;font-weight:300">Get notified when Hexbound launches on Google Play</p>
-        <form id="androidForm" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center" onsubmit="return handleAndroidSignup(event)">
-          <input type="email" id="androidEmail" placeholder="your@email.com" required style="flex:1;min-width:200px;padding:12px 18px;background:var(--bg);border:1px solid var(--b2);border-radius:8px;color:var(--t1);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s" onfocus="this.style.borderColor='var(--gold)'" onblur="this.style.borderColor='var(--b2)'">
-          <button type="submit" style="padding:12px 28px;background:linear-gradient(135deg,var(--gold),#E8B84A);color:var(--abyss);font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.08em;border:none;border-radius:8px;cursor:pointer;transition:.3s;white-space:nowrap" onmouseover="this.style.boxShadow='0 4px 20px rgba(212,165,55,.4)'" onmouseout="this.style.boxShadow='none'">Notify Me</button>
-        </form>
-        <p id="androidSuccess" style="display:none;margin-top:14px;font-size:13px;color:#2ECC71;font-weight:500">You're on the list! We'll notify you at launch.</p>
-      </div>
+    <div class="rev-card">
+      <span class="rev-badge verified">Verified</span>
+      <div class="rev-stars"><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"The art style is insane — every boss looks like it came straight from a D&D manual. And no pay-to-win? Take my money anyway, I bought the battle pass just to support."</p>
+      <div class="rev-author"><div class="rev-avatar">S</div><div><div class="rev-name">ShadowMage_X</div><div class="rev-date">Mage &bull; Platinum Tier</div></div></div>
+    </div>
+    <div class="rev-card">
+      <span class="rev-badge verified">Verified</span>
+      <div class="rev-stars"><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"As a Skeleton Rogue main, the build diversity is incredible. Poison + crit stacking combo is chef's kiss. PvP has never been this deep on mobile."</p>
+      <div class="rev-author"><div class="rev-avatar">B</div><div><div class="rev-name">BoneReaper</div><div class="rev-date">Rogue &bull; Gold Tier</div></div></div>
+    </div>
+    <div class="rev-card">
+      <span class="rev-badge verified">Verified</span>
+      <div class="rev-stars"><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Dungeons are no joke. Floor 10 bosses wiped my team twice before I figured out the pattern. This game respects your brain, not your wallet."</p>
+      <div class="rev-author"><div class="rev-avatar">I</div><div><div class="rev-name">IronWall_99</div><div class="rev-date">Tank &bull; Diamond Tier</div></div></div>
+    </div>
+    <div class="rev-card">
+      <div class="rev-stars"><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="rev-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <p class="rev-text">"Perfect for the commute — two PvP matches and a dungeon run, all done in 15 minutes. The Prestige system keeps me coming back every day."</p>
+      <div class="rev-author"><div class="rev-avatar">V</div><div><div class="rev-name">VoidWalker</div><div class="rev-date">Warrior &bull; Grandmaster</div></div></div>
     </div>
   </div>
+  <p class="rev-scroll-hint">&#8592; Drag to see more &#8594;</p>
 </section>
 
 <!-- ═══ COMPARISON: FREE vs PREMIUM ═══ -->
@@ -976,15 +1031,10 @@ html{scroll-behavior:auto!important}
   <div class="cta-in">
     <h2>Enter the Realm</h2>
     <p>Free to play. No pay-to-win. Pure strategy.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center">
-      <a href="https://apps.apple.com/app/hexbound" class="cta-b glow-border" style="border-radius:6px">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83z"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download on App Store
-      </a>
-      <a href="#community" style="padding:20px 40px;border:1px solid var(--b2);border-radius:6px;font-family:'Cinzel',serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);transition:.3s;display:inline-flex;align-items:center;gap:10px" onmouseover="this.style.background='rgba(212,165,55,.06)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='var(--b2)'">
-        Android — Notify Me
-      </a>
-    </div>
+    <a href="https://apps.apple.com/app/hexbound" class="cta-b glow-border" style="border-radius:6px">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83z"/><path d="M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on App Store
+    </a>
   </div>
 </section>
 
@@ -996,24 +1046,26 @@ html{scroll-behavior:auto!important}
       <a href="#features">Game Systems</a>
       <a href="#classes">Classes</a>
       <a href="#dungeons">Dungeons</a>
+      <a href="#bestiary">Bestiary</a>
     </div>
     <div class="f-col">
       <h4>Community</h4>
-      <a href="https://discord.gg/hexbound" target="_blank">Discord</a>
+      <a href="#reviews">Player Reviews</a>
       <a href="#faq">FAQ</a>
       <a href="mailto:support@hexboundgame.com">Contact Us</a>
     </div>
     <div class="f-col">
       <h4>Legal</h4>
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/support">Support</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Policy</a>
     </div>
   </div>
   <div class="f-divider"></div>
   <div class="f-social">
-    <a href="https://x.com/hexboundgame" target="_blank" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-    <a href="https://discord.gg/hexbound" target="_blank" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></svg></a>
-    <a href="https://reddit.com/r/hexbound" target="_blank" aria-label="Reddit"><svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
+    <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    <a href="#" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.947 2.418-2.157 2.418z"/></svg></a>
+    <a href="#" aria-label="Reddit"><svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
   </div>
   <p class="f-copy">&copy; 2026 Hexbound. All rights reserved. Made with darkness and determination.</p>
 </footer>
@@ -1022,8 +1074,15 @@ html{scroll-behavior:auto!important}
 <script>
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
-/* Hero entrance — plays immediately on load */
-window.addEventListener('load',()=>setTimeout(heroIn,100));
+/* Preloader */
+/* Preloader: remove after load OR after 4s max (safety net) */
+let preRemoved=false;
+function removePreloader(){
+  if(preRemoved)return;preRemoved=true;
+  document.getElementById('pre').classList.add('out');heroIn();
+}
+window.addEventListener('load',()=>setTimeout(removePreloader,2400));
+setTimeout(removePreloader,4000); /* fallback in case load never fires */
 
 /* Cursor glow */
 const cur=document.getElementById('cur');
@@ -1052,10 +1111,9 @@ function heroIn(){
   t.from('#hLogo',{opacity:0,y:50,scale:.9,duration:1.3})
   .from('#hTag',{opacity:0,y:25,duration:.8},'-=.6')
   .from('#hDesc',{opacity:0,y:25,duration:.8},'-=.5')
-  .from('#hRating',{opacity:0,y:15,scale:.95,duration:.6},'-=.3')
+  .from('.hb',{opacity:0,y:15,scale:.9,stagger:.07,duration:.5},'-=.3')
   .from('#hAs',{opacity:0,y:25,duration:.8},'-=.2')
-  .from('.s-cue',{opacity:0,duration:1},'-=.2')
-  .from('#hChar',{opacity:0,x:80,duration:1.5,ease:'power2.out'},'-=1.2');
+  .from('.s-cue',{opacity:0,duration:1},'-=.2');
 }
 
 /* Section headers */
@@ -1071,9 +1129,8 @@ gsap.from('.o-card',{opacity:0,y:60,scale:.88,stagger:.1,duration:.7,ease:'back.
 /* Features */
 gsap.from('.fc',{opacity:0,y:70,stagger:.1,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.f-grid',start:'top 82%'}});
 
-/* Classes - new interactive version */
-gsap.from('.class-tabs',{opacity:0,y:30,duration:.6,ease:'power3.out',scrollTrigger:{trigger:'.classes',start:'top 82%'}});
-gsap.from('.class-detail',{opacity:0,y:50,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.classes',start:'top 80%'}});
+/* Classes */
+gsap.from('.cp',{opacity:0,y:50,scale:.9,stagger:.12,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.c-strip',start:'top 82%'}});
 
 /* Dungeons */
 gsap.from('.dc',{opacity:0,y:90,rotateX:10,stagger:.15,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.d-grid',start:'top 82%'}});
@@ -1094,14 +1151,12 @@ document.querySelectorAll('.f-glow,.o-glow').forEach(g=>{
 });
 
 /* Counters */
-if(document.querySelectorAll('.st-v[data-c]').length > 0) {
-  document.querySelectorAll('.st-v[data-c]').forEach(el=>{
-    const t=+el.dataset.c,suf=el.innerHTML.includes('+')?'+':'';
-    ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
-      gsap.to({v:0},{v:t,duration:2.2,ease:'power2.out',onUpdate:function(){el.innerHTML=Math.round(this.targets()[0].v)+'<span class="pl">'+suf+'</span>'}});
-    }});
-  });
-}
+document.querySelectorAll('.st-v[data-c]').forEach(el=>{
+  const t=+el.dataset.c,suf=el.innerHTML.includes('+')?'+':'';
+  ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
+    gsap.to({v:0},{v:t,duration:2.2,ease:'power2.out',onUpdate:function(){el.innerHTML=Math.round(this.targets()[0].v)+'<span class="pl">'+suf+'</span>'}});
+  }});
+});
 
 /* 3D tilt */
 document.querySelectorAll('.fc,.cp,.bt').forEach(el=>{
@@ -1113,13 +1168,11 @@ document.querySelectorAll('.fc,.cp,.bt').forEach(el=>{
 });
 
 /* Bestiary drag */
-const bt2=document.getElementById('beTrack');
-if(bt2){let dr=false,sx,sl;
+const bt2=document.getElementById('beTrack');let dr=false,sx,sl;
 bt2.addEventListener('mousedown',e=>{dr=true;bt2.style.cursor='grabbing';sx=e.pageX-bt2.offsetLeft;sl=bt2.scrollLeft});
 bt2.addEventListener('mouseleave',()=>{dr=false;bt2.style.cursor='grab'});
 bt2.addEventListener('mouseup',()=>{dr=false;bt2.style.cursor='grab'});
 bt2.addEventListener('mousemove',e=>{if(!dr)return;e.preventDefault();bt2.scrollLeft=sl-(e.pageX-bt2.offsetLeft-sx)*1.5});
-}
 
 /* Smooth text reveal for parallax break text */
 document.querySelectorAll('.img-break-text').forEach(el=>{
@@ -1181,7 +1234,6 @@ document.querySelectorAll('.n-cta,.l-cta,.cta-b,.as-btn').forEach(btn=>{
 /* ─── HORIZONTAL AUTO-SCROLL for bestiary ─── */
 (function autoScrollBestiary(){
   const track=document.getElementById('beTrack');
-  if(!track) return;
   let autoSpeed=0.5,autoActive=true;
   track.addEventListener('mouseenter',()=>autoActive=false);
   track.addEventListener('mouseleave',()=>autoActive=true);
@@ -1206,12 +1258,8 @@ document.querySelectorAll('.sec-h').forEach(h=>{
 gsap.from('.tl-step',{opacity:0,x:-40,stagger:.18,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.timeline',start:'top 82%'}});
 
 /* ─── RARITY PILLS cascade ─── */
-if(document.querySelector('.rarity-row')) {
-  gsap.from('.rar-pill',{opacity:0,y:20,scale:.85,stagger:.08,duration:.5,ease:'back.out(1.7)',scrollTrigger:{trigger:'.rarity-row',start:'top 88%'}});
-}
-if(document.querySelector('.rar-grid')) {
-  gsap.from('.rar-card',{opacity:0,y:50,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.rar-grid',start:'top 85%'}});
-}
+gsap.from('.rar-pill',{opacity:0,y:20,scale:.85,stagger:.08,duration:.5,ease:'back.out(1.7)',scrollTrigger:{trigger:'.rarity-row',start:'top 88%'}});
+gsap.from('.rar-card',{opacity:0,y:50,stagger:.12,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.rar-grid',start:'top 85%'}});
 
 /* ─── FAQ ACCORDION ─── */
 document.querySelectorAll('.faq-q').forEach(q=>{
@@ -1340,17 +1388,13 @@ mOverlay.querySelectorAll('.m-link').forEach(a=>{
 });
 
 /* ─── REVIEWS ANIMATIONS ─── */
-if(document.querySelector('.reviews-track')){
 gsap.from('.rev-card',{opacity:0,x:60,stagger:.1,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.reviews-track',start:'top 82%'}});
-}
 /* reviews drag-scroll */
-const rt=document.getElementById('revTrack');
-if(rt){let rDr=false,rSx,rSl;
+const rt=document.getElementById('revTrack');let rDr=false,rSx,rSl;
 rt.addEventListener('mousedown',e=>{rDr=true;rt.style.cursor='grabbing';rSx=e.pageX-rt.offsetLeft;rSl=rt.scrollLeft});
 rt.addEventListener('mouseleave',()=>{rDr=false;rt.style.cursor='grab'});
 rt.addEventListener('mouseup',()=>{rDr=false;rt.style.cursor='grab'});
 rt.addEventListener('mousemove',e=>{if(!rDr)return;e.preventDefault();rt.scrollLeft=rSl-(e.pageX-rt.offsetLeft-rSx)*1.5});
-}
 
 /* ─── COMPARISON TABLE stagger ─── */
 gsap.from('.comp-row:not(.comp-head)',{opacity:0,x:-30,stagger:.06,duration:.5,ease:'power3.out',scrollTrigger:{trigger:'.comp-table',start:'top 82%'}});
@@ -1394,54 +1438,6 @@ document.querySelectorAll('.ss-phone').forEach(ph=>{
 /* ─── FOOTER fade in ─── */
 gsap.from('.f-grid .f-col',{opacity:0,y:30,stagger:.1,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'.footer',start:'top 90%'}});
 gsap.from('.f-social a',{opacity:0,scale:.8,stagger:.06,duration:.4,ease:'back.out(2)',scrollTrigger:{trigger:'.f-social',start:'top 95%'}});
-
-/* ─── Community section animations ─── */
-gsap.from('.community .l-cta',{opacity:0,y:30,stagger:.1,duration:.6,ease:'power3.out',scrollTrigger:{trigger:'.community',start:'top 80%'}});
-
-/* ─── Android email signup handler ─── */
-function handleAndroidSignup(e){
-  e.preventDefault();
-  const email=document.getElementById('androidEmail').value;
-  const form=document.getElementById('androidForm');
-  const success=document.getElementById('androidSuccess');
-  /* Store in localStorage as backup, send to backend when available */
-  try{
-    const emails=JSON.parse(localStorage.getItem('hb_android_signups')||'[]');
-    emails.push({email:email,ts:Date.now()});
-    localStorage.setItem('hb_android_signups',JSON.stringify(emails));
-  }catch(err){}
-  /* Try sending to backend API */
-  fetch('/api/android-signup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})}).catch(()=>{});
-  form.style.display='none';
-  success.style.display='block';
-  return false;
-}
-
-/* ─── INTERACTIVE CLASS SHOWCASE ─── */
-const classData={
-  warrior:{img:'assets/boss-bone-warrior-full.png',name:'Warrior',role:'Melee Devastator',desc:'Overwhelming strength meets relentless aggression. Warriors dominate the frontline with devastating physical attacks and unyielding willpower. Master of brute force — no subtlety, no mercy.',abilities:[{icon:'⚔️',name:'Crushing Blow',desc:'Massive single-target physical damage that ignores a portion of armor'},{icon:'🔥',name:'Battle Fury',desc:'Each hit increases damage output for the remainder of combat'},{icon:'🛡️',name:'Iron Will',desc:'Reduces incoming damage by 30% when HP drops below half'}]},
-  rogue:{img:'assets/boss-wraith-assassin-full.png',name:'Rogue',role:'Swift Assassin',desc:'Swift as shadow, deadly as poison. Rogues strike from the darkness with lethal precision, chaining critical hits and evading retaliation. Speed is the ultimate weapon.',abilities:[{icon:'🗡️',name:'Shadow Strike',desc:'High critical chance attack from stealth — guaranteed crit on first hit'},{icon:'💨',name:'Evasion',desc:'50% chance to completely dodge the next incoming attack'},{icon:'☠️',name:'Poison Blade',desc:'Applies stacking poison damage over 3 turns'}]},
-  mage:{img:'assets/boss-scarecrow-mage-full.png',name:'Mage',role:'Arcane Controller',desc:'Command the arcane forces that reshape battlefields. Mages unleash devastating area spells and control the flow of combat with debuffs and shields. Knowledge is power.',abilities:[{icon:'✨',name:'Arcane Blast',desc:'Pure magical damage that bypasses physical armor entirely'},{icon:'❄️',name:'Frost Nova',desc:'Reduces enemy speed and attack for 2 turns'},{icon:'🔮',name:'Mana Shield',desc:'Absorbs incoming damage using mana as a secondary resource'}]},
-  tank:{img:'assets/boss-iron-guardian-full.png',name:'Tank',role:'Unbreakable Wall',desc:'An immovable fortress of iron and will. Tanks outlast their opponents through superior defense and punish every reckless strike. Patience is the deadliest weapon.',abilities:[{icon:'🏰',name:'Fortify',desc:'Doubles armor rating for 2 turns — near-invulnerable to physical damage'},{icon:'⚡',name:'Retaliate',desc:'Reflects 25% of blocked damage back to the attacker'},{icon:'❤️',name:'Second Wind',desc:'Heals 15% max HP when dropping below 25% — once per battle'}]}
-};
-document.querySelectorAll('.class-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    const cls=tab.dataset.class;
-    const d=classData[cls];
-    document.querySelectorAll('.class-tab').forEach(t=>t.classList.remove('active'));
-    tab.classList.add('active');
-    const img=document.getElementById('classImg');
-    const detail=document.querySelector('.class-detail');
-    gsap.to(detail,{opacity:0,x:-20,duration:.2,onComplete:()=>{
-      img.src=d.img;img.alt=d.name;
-      document.getElementById('className').textContent=d.name;
-      document.getElementById('classRole').textContent=d.role;
-      document.getElementById('classDesc').textContent=d.desc;
-      document.getElementById('classAbilities').innerHTML=d.abilities.map(a=>`<div class="class-ability"><div class="ability-icon">${a.icon}</div><div class="ability-text"><h4>${a.name}</h4><p>${a.desc}</p></div></div>`).join('');
-      gsap.fromTo(detail,{opacity:0,x:20},{opacity:1,x:0,duration:.4,ease:'power3.out'});
-    }});
-  });
-});
 </script>
 </body>
 </html>
